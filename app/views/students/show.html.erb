@@ -1,0 +1,13 @@
+<p> Name : <%= @student.name %> </p>
+
+<%= @student.course %><br>
+
+<%= @student.dept %><br>
+
+<%= @student.div %><br>
+
+<%= @student.year %><br>
+
+<%= @student.email %><br>
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'back' ,students_path %>
