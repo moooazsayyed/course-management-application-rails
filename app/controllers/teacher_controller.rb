@@ -4,6 +4,10 @@ class TeacherController < ApplicationController
     @teachers = Teacher.all
   end
 
+  def show
+    @teacher = Teacher.find(params[:id])
+  end
+
   def new
     @teacher = Teacher.new
   end
@@ -13,31 +17,33 @@ class TeacherController < ApplicationController
     if @teacher.save
       redirect_to teachers_path
     else
+      flash[:error] = "Failed to create teacher"
       render :new
     end
   end
 
   def edit
-    @teacher = Teacher.find[params[:id]]
+    @teacher = Teacher.find(params[:id])
   end
 
-  def updated
-    @teacher =  Teacher.find[params[:id]]
-    if @teacher.update[teacher_params]
+  def update
+    @teacher = Teacher.find(params[:id])
+    if @teacher.update(teacher_params)
       redirect_to @teacher
     else
-      redirect_to :edit
+      render :edit ,status: :unprocessable_entity
     end
   end
 
   def delete
-    @employee = Teacher.find(params[:id])
-    @employee.destroy
-    redirect_to employees_path
+    @teacher = Teacher.find(params[:id])
+    @teacher.destroy
+    redirect_to teachers_path
   end
 
   private
+
   def teacher_params
-    params.require(:teacher).permit(:name, :course, :dept ,:email)
+    params.require(:teacher).permit(:name, :course, :dept, :email)
   end
 end

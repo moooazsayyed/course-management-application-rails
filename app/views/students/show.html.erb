@@ -1,13 +1,13 @@
 <p> Name : <%= @student.name %> </p>
 
-<%= @student.course %><br>
+<p>Course :<%= @student.course %><br></p>
 
-<%= @student.dept %><br>
+<p> Department<%= @student.dept %><br></p>
 
-<%= @student.div %><br>
+<p> Division<%= @student.div %><br></p>
 
-<%= @student.year %><br>
+<p> Year<%= @student.year %><br></p>
 
-<%= @student.email %><br>
+<p> Email<%= @student.email %><br></p>
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'back' ,students_path %>

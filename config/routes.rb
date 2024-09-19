@@ -15,15 +15,16 @@ Rails.application.routes.draw do
   delete "/students/:id", to: "students#delete", as: :destroy_student
 
   #Course
-
+  resources :courses
 
   #Teacher
   get "/teachers" => "teacher#index"
-  get "/teachers/:id" => "teacher#show"
-  get "/teachers/new" => "teacher#show", as: :new_teacher
-  get "/teachers/:id/edit" => "teacher#new" , as: :edit_teacher
-  get "/teachers" => "teacher#create"
-
+  get "/teachers/:id" => "teacher#show", as: :teacher
+  get "/teacher/new" => "teacher#new", as: :new_teacher
+  get "/teachers/:id/edit" => "teacher#edit" , as: :edit_teacher
+  patch "/teachers/:id" ,  to: "teacher#update"
+  post "/teachers" => "teacher#create"
+  delete "/teachers/:id" , to: "teacher#delete", as: :destroy_teacher
 
 
 

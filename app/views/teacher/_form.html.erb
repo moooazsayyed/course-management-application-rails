@@ -1,0 +1,38 @@
+<h1><%= @teacher.new_record? ? 'New Teacher' : 'Edit Teacher' %></h1>
+
+<%= form_with model: @teacher, local: true do |form| %>
+  <% if @teacher.errors.any? %>
+    <div>
+      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+      <ul>
+        <% @teacher.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :course %>
+    <%= form.text_field :course %>
+  </div>
+
+  <div>
+    <%= form.label :dept %>
+    <%= form.text_field :dept %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
