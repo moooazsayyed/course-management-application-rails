@@ -31,6 +31,7 @@ def update
     redirect_to @student
   else
     redirect_to :edit, status: :unprocessable_entity
+    flash[:error] = "Failed to update"
   end
 end
 
@@ -39,7 +40,7 @@ def delete
   if @student.delete
     redirect_to students_path, notice: 'Student was successfully deleted.'
   else
-    redirect_to students_path, notice: 'Failed.'
+    redirect_to students_path, notice: 'Failed to delete student.'
   end
 end
 
